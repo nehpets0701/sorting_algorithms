@@ -5,11 +5,11 @@ void selection_sort(int *array, size_t size)
 	unsigned int i, j;
 	int val, num;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		num = i;
 		val = array[i];
-		for (j = i; j < size; j++)
+		for (j = i; j < size - 1; j++)
 		{
 			if (array[j] < array[num])
 			{
