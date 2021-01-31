@@ -3,7 +3,7 @@
 void selection_sort(int *array, size_t size)
 {
 	unsigned int i, j;
-	int val, num;
+	unsigned int val, num;
 
 	for (i = 0; i < size - 1; i++)
 	{
@@ -17,8 +17,11 @@ void selection_sort(int *array, size_t size)
 				val = array[num];
 			}
 		}
-		array[num] = array[i];
-		array[i] = val;
-		print_array(array, size);
+		if (i != num)
+		{
+			array[num] = array[i];
+			array[i] = val;
+			print_array(array, size);
+		}
 	}
 }
