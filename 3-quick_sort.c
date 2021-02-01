@@ -25,7 +25,7 @@ int partition(int arr[], int low, int high)
 	int i = (low - 1);
 	int j;
 
-	for (j = low; j <= high; j++)
+	for (j = low; j <= high - 1; j++)
 	{
 		if (arr[j] <= pivot)
 		{
@@ -38,45 +38,22 @@ int partition(int arr[], int low, int high)
 }
 
 /**
- * findLow- finds lowest number in an array
- * @arr: array input
- * Return: lowest value
+ * sort-sort function
+ * @arr:input array
+ * @low:first element of array
+ * @high:last element of array
+ * @size:size of array
  */
-int findLow(int *arr, int size)
+void sort(int *arr, int low, int high, size_t size)
 {
-	int i = 0;
-	int lowest = arr[0];
+	int pIndex;
 
-	for (i = 0; i <= size; i++)
+	if (low < high)
 	{
-		if (arr[i] < lowest)
-			lowest = arr[i];
-		else
-			continue;
-		
+		pIndex = partition(arr, low, high);
+		sort(arr, low, pIndex - 1, size);
+		sort(arr, pIndex + 1, high, size);
 	}
-	return (lowest);
-}
-
-/**
- * findHigh- finds highest number in an array
- * @arr: array input
- * Return: highest value
- */
-int findHigh(int *arr, int size)
-{
-	int i = 0;
-	int highest = arr[0];
-
-	for (i = 0; i <= size; i++)
-	{
-		if (arr[i] > highest)
-			highest = arr[i];
-		else
-			continue;
-		
-	}
-	return (highest);
 }
 
 /**
@@ -86,32 +63,6 @@ int findHigh(int *arr, int size)
  */
 void quick_sort(int *array, size_t size)
 {
-	int low = findLow(array, size);
-	int high = findHigh(array, size);
-	int stack[1024];
-	int top = -1;
-	int pIndex = 0;
-
-	stack[++top] = low;
-	stack[++top] = high;
-
-	while (top >= 0)
-	{
-		high = stack[top--];
-		low = stack[top--];
-
-		pIndex = partition(array, low, high);
-
-		if (pIndex - 1 > low)
-		{
-			stack[++top] = low;
-			stack[++top] = pIndex - 1;
-		}
-
-		if (pIndex + 1 < high)
-		{
-			stack[++top] = pIndex + 1;
-			stack[++top] = high;
-		}
-	}
+	if (size >= 2)
+		sort(array, 0, size - 1, size);
 }
