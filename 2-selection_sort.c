@@ -1,5 +1,10 @@
 #include "sort.h"
 
+/**
+ * selection_sort-selection
+ * @array:input
+ * @size:size
+ */
 void selection_sort(int *array, size_t size)
 {
 	unsigned int i, j;
