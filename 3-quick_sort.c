@@ -18,6 +18,7 @@ void swap(int *a, int *b)
  * @arr:array to partition
  * @low:lowest element
  * @high:highest element
+ * @size:size
  */
 int partition(int arr[], int low, int high, size_t size)
 {
