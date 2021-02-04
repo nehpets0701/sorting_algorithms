@@ -1,4 +1,4 @@
-kSorting Algorithms
+Sorting Algorithms
 
 Bubble sort - compares adjacent elements and swaps them if they are in the wrong
 order
